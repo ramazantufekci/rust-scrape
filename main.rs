@@ -7,7 +7,7 @@ async fn main(){
   let response = client.get("https://scrapeme.live/shop/").send().await.unwrap();
   let html_content:String = response.text().await.unwrap();
   let document= scraper::Html::parse_document(&html_content);
-  let html_product_selector:Result<Selector,SelectorErrorKind> = scraper::Selector::parse("li.product").unwrap();
+  let html_product_selector = scraper::Selector::parse("li.product").unwrap();
 
   let html_products = document.select(&html_product_selector);
 
