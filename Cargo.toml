@@ -2,8 +2,7 @@
 name = "rust-playground"
 version = "0.1.0"
 edition = "2021"
-[bin]
-name="scrapper-rt"
+
 
 [dependencies]
 reqwest = "0.12.4"
