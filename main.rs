@@ -4,7 +4,7 @@ use reqwest::Client;
 async fn main(){
   let client = Client::new();
 
-  let response = client.get("https://www.ramazantufekci.com").send().await.unwrap();
+  let response = client.get("https://scrapeme.live/shop/").send().await.unwrap();
   let html_content:String = response.text().await.unwrap();
   let document= scraper::Html::parse_document(&html_content);
   let html_product_selector = scraper::Selector::parse("li.product").unwrap();
