@@ -3,6 +3,10 @@ name = "rust-playground"
 version = "0.1.0"
 edition = "2021"
 
+[[bin]]
+name = "cool-tool"
+test = false
+bench = false
 
 [dependencies]
 reqwest = "0.12.4"
