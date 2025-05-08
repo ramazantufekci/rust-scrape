@@ -2,14 +2,14 @@ use reqwest::Client;
 
 #[tokio::main]
 async fn main(){
-  let client:Client = Client::new();
+  let client = Client::new();
 
-  let response:RequestBuilder = client.get("https://scrapeme.live/shop/").send().await.unwrap();
+  let response = client.get("https://scrapeme.live/shop/").send().await.unwrap();
   let html_content:String = response.text().await.unwrap();
-  let document:Html = scraper::Html::parse_document(&html_content);
+  let document= scraper::Html::parse_document(&html_content);
   let html_product_selector:Result<Selector,SelectorErrorKind> = scraper::Selector::parse("li.product").unwrap();
 
-  let html_products:Select = document.select(&html_product_selector);
+  let html_products = document.select(&html_product_selector);
 
   for product in html_products{
     let url = product.select(&scraper::Selector::parse("a").unwrap()).next().and_then(|a|a.value().attr("href")).map(str::to_owned);
